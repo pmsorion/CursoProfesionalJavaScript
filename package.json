@@ -1,0 +1,24 @@
+{
+  "name": "CursoProfesionaldeJavaScript",
+  "version": "1.0.0",
+  "description": "Proyecto del Curso Profesional del JavaScript de la Escuela de JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "live-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pmsorion/CursoProfesionalJavaScript.git"
+  },
+  "keywords": [],
+  "author": "Francisco Garcia <garciafran@hotmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pmsorion/CursoProfesionalJavaScript/issues"
+  },
+  "homepage": "https://github.com/pmsorion/CursoProfesionalJavaScript#readme",
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}
