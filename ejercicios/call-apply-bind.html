@@ -71,13 +71,22 @@
       // call y apply asignan el valor de this y se va a ejecutar inmediatamente
       // bind crea una nueva funcion,
       
-      const buttons = document.getElementsByClassName('call-to-action')
-      buttons.forEach(button => {
-        button.onClick = () => alert('Nunca pares de aprender!!!')
+      //const buttons = document.getElementsByClassName('call-to-action');
+      const buttons = document.getElementsByClassName('call-to-action');
+      // buttons.forEach(button => {
+      //   button.onClick = () => alert('Nunca pares de aprender!!!')
+      // });
+
+      // Array.prototype.forEach.call(buttons, button => {
+      //   button.onClick = () => alert('Nunca para de apreder!!!!!')
+      // });
+
+      Array.prototype.forEach.call(buttons, button => {
+        button.onclick = () => alert('Nunca pares de aprender!!!!!!');
       });
 
       //Da error por que buttons, es un NodeList y no una funcion
-      
+
 
     </script>
   </body>
