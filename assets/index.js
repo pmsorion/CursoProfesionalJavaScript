@@ -14,6 +14,12 @@ playButton.onclick = () => player.togglePlay();
 const muteButton = document.querySelector('#muteButton');
 muteButton.onclick = () => {
     player.media.muted ? player.unmute() : player.mute()
+};
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js').catch(error => {
+        console.log(error.message)
+    })
 }
 
 
@@ -27,6 +33,3 @@ muteButton.onclick = () => {
 // playButton.onclick = () => {
 //     player.media.paused ? (player.play(), changeName()) : (player.pause(), changeName())
 // }
-
-
-
