@@ -16,7 +16,6 @@ self.addEventListener('fetch', event => {
 
     //actualizar el cache
     event.waitUntil(updateCache(request));
-
 })
 
 async function precache() {
