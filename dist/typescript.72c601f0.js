@@ -125,7 +125,84 @@ function add(a, b) {
 }
 
 var sum = add(2, 3);
-console.log(sum);
+console.log(sum); //Boolean
+
+var muted = true;
+muted = false; //esto no lo deja hacer
+//muted ='callado';
+//numeros
+
+var age = '6';
+var numerador = 42;
+var denominador = 6; //error
+//let denominador1: number = age;
+
+var resultado = numerador / denominador; //string
+
+var nombre = 'Francisco';
+var saludo = "Mi nombre es: " + nombre; //arreglos
+//aqui defino un arreglo tipo string y esta vacio
+//eb el momento de la definicion
+
+var people = [];
+people = ["Isabel", "Nicole", "Liz"]; //con los metodos asociados a un arrelgo tambien nos muestra error
+//people.push(9000);
+
+people.push('9000');
+var peopleAndNumbers = [];
+peopleAndNumbers.push('Fran');
+peopleAndNumbers.push(90001); //Enum
+
+var Color;
+
+(function (Color) {
+  Color["Rojo"] = "Rojo";
+  Color["Verde"] = "Verde";
+  Color["Azul"] = "Azul";
+  Color["Amarillo"] = "Amarillo";
+})(Color || (Color = {}));
+
+var colorFavorito = Color.Verde;
+console.log("mi color favorito es " + colorFavorito); //Any para que acepte cualquier tipo de dato
+
+var comodin = 'Joker';
+comodin = {
+  Type: 'Wildcard'
+}; // Object
+
+var someObject = {
+  Type: 'Wildcard'
+}; // With strictNullChecks set to true
+// let a: null = null; // Ok
+// let b: undefined = null; // Error
+// let c: number = null; // Error
+// let d: void = null; // Error
+// // With strictNullChecks set to false
+// let e: null = null; // Ok
+// let f: undefined = null; // Ok
+// let g: number = null; // Ok
+// let h: void = null; // Ok
+
+var a = 12;
+var b = 17;
+
+function showProduct(first, second) {
+  console.log("The product is: " + first * second);
+}
+
+showProduct(a, b);
+var fullName = "Bob Bobbington";
+var ages = 37;
+var sentence = "Hello, my name is " + fullName + ".\n\nI'll be " + (ages + 1) + " years old next month.";
+console.log(sentence);
+var sentences = "Hello, my name is " + fullName + ".\n\n" + "I'll be " + (age + 1) + " years old next month.";
+console.log(sentences); // Declare a tuple type
+
+var x; // Initialize it
+
+x = ["hello", 10]; // OK
+
+console.log(x[0].substring(1)); // OK
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -154,7 +231,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56835" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65424" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

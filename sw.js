@@ -43,5 +43,3 @@ async function updateCache(request) {
     const response = await fetch(request)
     return cache.put(request, response);
 }
-
-

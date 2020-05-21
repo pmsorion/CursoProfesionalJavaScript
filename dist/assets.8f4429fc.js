@@ -240,7 +240,8 @@ var AutoPause = /*#__PURE__*/function () {
   }, {
     key: "handleIntersection",
     value: function handleIntersection(entries) {
-      var entry = entries[0];
+      var entry = entries[0]; //console.log(entry);
+
       var isVisible = entry.intersectionRatio >= this.threshold;
 
       if (isVisible) {
@@ -336,7 +337,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56835" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65424" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

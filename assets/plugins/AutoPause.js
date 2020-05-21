@@ -19,14 +19,14 @@ class AutoPause {
 
     handleIntersection(entries) {
         const entry = entries[0];
-        
-       const isVisible = entry.intersectionRatio >= this.threshold
+        //console.log(entry);
+        const isVisible = entry.intersectionRatio >= this.threshold
 
-       if (isVisible) {
-        this.player.play();
-       } else {
-        this.player.pause();
-       }
+        if (isVisible) {
+            this.player.play();
+        } else {
+            this.player.pause();
+        }
     }
 
     handleVisibilityChange() {
