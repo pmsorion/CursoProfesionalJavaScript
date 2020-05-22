@@ -143,3 +143,40 @@ const resultado1 = otraSuma(5, 7);
 console.log(resultado1);
 const resultado2 = sumita(9, 9);
 console.log(resultado2);
+
+
+//Interfaces
+
+interface Rectangulo {
+    ancho: number;
+    alto: number;
+    color: Color;
+}
+
+let rect: Rectangulo = {
+    ancho: 4,
+    alto: 8,
+    color: Color.Rojo,
+}
+
+function area (r: Rectangulo): number {
+    return r.alto * r.ancho;
+}
+
+const area2 = (r: Rectangulo):number => r.alto * r.ancho
+
+const areaRect = area(rect);
+console.log(areaRect)
+const otraArea = area2(rect);
+console.log(otraArea);
+
+//console.log(rect.toString());
+
+rect.toString = function() {
+    return this.color ? `Un rectangulo ${this.color}` : `Un rectangulo descolorido`
+}
+
+//rect.toString = () => this.color ? `Un rectangulo ${this.color}` : `Un rectangulo SIN COLOR`
+
+
+console.log(rect.toString());
