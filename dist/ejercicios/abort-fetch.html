@@ -15,15 +15,11 @@
     <button id="load">Load HUGE Image</button>
     <button id="stop" disabled="">Stop Fetching</button>
 
-    <script>function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-var url = 'https://images.pexels.com/photos/974470/nature-stars-milky-way-galaxy-974470.jpeg?q=100';
-var img = document.getElementById('huge-image');
-var loadButton = document.getElementById('load');
-var stopButton = document.getElementById('stop');
-var controller;
+    <script>const url = 'https://images.pexels.com/photos/974470/nature-stars-milky-way-galaxy-974470.jpeg?q=100';
+const img = document.getElementById('huge-image');
+const loadButton = document.getElementById('load');
+const stopButton = document.getElementById('stop');
+let controller;
 
 function startLoading() {
   loadButton.disabled = true;
@@ -37,47 +33,23 @@ function stopLoading() {
   stopButton.disabled = true;
 }
 
-loadButton.onclick = /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-  var response, blob, imgUrl;
-  return regeneratorRuntime.wrap(function _callee$(_context) {
-    while (1) {
-      switch (_context.prev = _context.next) {
-        case 0:
-          startLoading();
-          controller = new AbortController();
-          _context.prev = 2;
-          _context.next = 5;
-          return fetch(url, {
-            signal: controller.signal
-          });
+loadButton.onclick = async function () {
+  startLoading();
+  controller = new AbortController();
 
-        case 5:
-          response = _context.sent;
-          _context.next = 8;
-          return response.blob();
+  try {
+    const response = await fetch(url, {
+      signal: controller.signal
+    });
+    const blob = await response.blob();
+    const imgUrl = URL.createObjectURL(blob);
+    img.src = imgUrl;
+  } catch (error) {
+    console.log(error.message);
+  }
 
-        case 8:
-          blob = _context.sent;
-          imgUrl = URL.createObjectURL(blob);
-          img.src = imgUrl;
-          _context.next = 16;
-          break;
-
-        case 13:
-          _context.prev = 13;
-          _context.t0 = _context["catch"](2);
-          console.log(_context.t0.message);
-
-        case 16:
-          stopLoading();
-
-        case 17:
-        case "end":
-          return _context.stop();
-      }
-    }
-  }, _callee, null, [[2, 13]]);
-}));
+  stopLoading();
+};
 
 stopButton.onclick = function () {
   controller.abort();

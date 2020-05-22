@@ -235,11 +235,11 @@ var juanda = fullName('Juan David'); //eventualmente se puede requerir que en lu
 console.log(frank);
 console.log(juanda);
 
-var otraSuma = function otraSuma(x, y) {
+var otraSuma = function (x, y) {
   return x + y;
 };
 
-var sumita = function sumita(x, y) {
+var sumita = function (x, y) {
   return x + y;
 };
 
@@ -257,7 +257,7 @@ function area(r) {
   return r.alto * r.ancho;
 }
 
-var area2 = function area2(r) {
+var area2 = function (r) {
   return r.alto * r.ancho;
 };
 
@@ -300,7 +300,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57074" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57440" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

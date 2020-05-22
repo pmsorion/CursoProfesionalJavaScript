@@ -28,14 +28,10 @@
 // printNumber();
 //Block scope
 function printNumber2() {
-  var _loop = function _loop(i) {
-    setTimeout(function () {
+  for (let i = 0; i < 10; i++) {
+    setTimeout(() => {
       console.log(i);
     }, 100);
-  };
-
-  for (var i = 0; i < 10; i++) {
-    _loop(i);
   }
 }
 

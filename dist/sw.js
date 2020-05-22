@@ -118,16 +118,12 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"sw.js":[function(require,module,exports) {
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-var VERSION = "v1";
-self.addEventListener('install', function (event) {
+const VERSION = "v1";
+self.addEventListener('install', event => {
   event.waitUntil(precache());
 });
-self.addEventListener('fetch', function (event) {
-  var request = event.request; //solo trabajaremos con los get
+self.addEventListener('fetch', event => {
+  const request = event.request; //solo trabajaremos con los get
 
   if (request.method !== "GET") {
     return;
@@ -139,106 +135,29 @@ self.addEventListener('fetch', function (event) {
   event.waitUntil(updateCache(request));
 });
 
-function precache() {
-  return _precache.apply(this, arguments);
+async function precache() {
+  const cache = await caches.open(VERSION);
+  return cache.addAll([// '/',
+    // '/index.html',
+    // '/assets/index.js',
+    // '/assets/MediaPlayer.js',
+    // '/assets/plugins/AutoPlay.js',
+    // '/assets/plugins/AutoPause.js',
+    // '/assets/index.css',
+    // '/assets/BigBuckBunny.mp4',
+  ]);
 }
 
-function _precache() {
-  _precache = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-    var cache;
-    return regeneratorRuntime.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _context.next = 2;
-            return caches.open(VERSION);
-
-          case 2:
-            cache = _context.sent;
-            return _context.abrupt("return", cache.addAll([// '/',
-              // '/index.html',
-              // '/assets/index.js',
-              // '/assets/MediaPlayer.js',
-              // '/assets/plugins/AutoPlay.js',
-              // '/assets/plugins/AutoPause.js',
-              // '/assets/index.css',
-              // '/assets/BigBuckBunny.mp4',
-            ]));
-
-          case 4:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee);
-  }));
-  return _precache.apply(this, arguments);
+async function cachedResponse(request) {
+  const cache = await caches.open(VERSION);
+  const response = await cache.match(request);
+  return response || fetch(request);
 }
 
-function cachedResponse(_x) {
-  return _cachedResponse.apply(this, arguments);
-}
-
-function _cachedResponse() {
-  _cachedResponse = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(request) {
-    var cache, response;
-    return regeneratorRuntime.wrap(function _callee2$(_context2) {
-      while (1) {
-        switch (_context2.prev = _context2.next) {
-          case 0:
-            _context2.next = 2;
-            return caches.open(VERSION);
-
-          case 2:
-            cache = _context2.sent;
-            _context2.next = 5;
-            return cache.match(request);
-
-          case 5:
-            response = _context2.sent;
-            return _context2.abrupt("return", response || fetch(request));
-
-          case 7:
-          case "end":
-            return _context2.stop();
-        }
-      }
-    }, _callee2);
-  }));
-  return _cachedResponse.apply(this, arguments);
-}
-
-function updateCache(_x2) {
-  return _updateCache.apply(this, arguments);
-}
-
-function _updateCache() {
-  _updateCache = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(request) {
-    var cache, response;
-    return regeneratorRuntime.wrap(function _callee3$(_context3) {
-      while (1) {
-        switch (_context3.prev = _context3.next) {
-          case 0:
-            _context3.next = 2;
-            return caches.open(VERSION);
-
-          case 2:
-            cache = _context3.sent;
-            _context3.next = 5;
-            return fetch(request);
-
-          case 5:
-            response = _context3.sent;
-            return _context3.abrupt("return", cache.put(request, response));
-
-          case 7:
-          case "end":
-            return _context3.stop();
-        }
-      }
-    }, _callee3);
-  }));
-  return _updateCache.apply(this, arguments);
+async function updateCache(request) {
+  const cache = await caches.open(VERSION);
+  const response = await fetch(request);
+  return cache.put(request, response);
 }
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -268,7 +187,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57074" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57440" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -95,12 +95,12 @@ function Hero(name) {
 }
 
 Hero.prototype.saludar = function () {
-  console.log("New hero: ".concat(this.name));
+  console.log(`New hero: ${this.name}`);
 };
 
-var centella = new Hero('Centella');
+const centella = new Hero('Centella');
 centella.saludar();
-var iron = new Hero('Iron Man');
+const iron = new Hero('Iron Man');
 iron.saludar();</script>
   </body>
 </html>

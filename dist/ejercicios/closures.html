@@ -32,21 +32,21 @@
 // }
 // console.log(counter.count)
 function makeCounter(n) {
-  var count = n;
+  let count = n;
   return {
-    increase: function increase() {
+    increase: function () {
       return ++count;
     },
-    decrease: function decrease() {
+    decrease: function () {
       return --count;
     },
-    getCount: function getCount() {
+    getCount: function () {
       return count;
     }
   };
 }
 
-var counter = makeCounter(7);
+let counter = makeCounter(7);
 console.log("The count is: ", counter.increase());
 console.log("The count is: ", counter.decrease());
 console.log("The count is: ", counter.getCount()); // })();

@@ -16,31 +16,32 @@
 // Si no existe, entonces sugerimos una que pueda funcionar
 // Para eso eso vamos a usar un algoritmo que se llama Levenshtein. (window.Levenshtein.get)
 // Ejemplos de levenshtein distance (usa window.Levenshtein)
-var target = {
+const target = {
   red: 'Rojo',
   green: 'Verde',
   blue: 'Azul',
   yellow: 'Amarillo'
 };
-var handler = {
-  get: function get(obj, prop) {
+const handler = {
+  get(obj, prop) {
     //debugger;
     if (prop in obj) {
       return obj[prop];
     }
 
-    var suggestion = Object.keys(obj).find(function (key) {
+    const suggestion = Object.keys(obj).find(key => {
       return Levenshtein.get(key, prop) <= 3;
     });
 
     if (suggestion) {
-      console.log("".concat(prop, "  no se encontro. Quisistedecir ").concat(suggestion, "?"));
+      console.log(`${prop}  no se encontro. Quisistedecir ${suggestion}?`);
     }
 
     return obj[prop];
   }
+
 };
-var p = new Proxy(target, handler); //target es el objeto que queremos interceptar
+const p = new Proxy(target, handler); //target es el objeto que queremos interceptar
 //handler</script>
   </body>
 </html>

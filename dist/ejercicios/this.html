@@ -13,13 +13,13 @@
     </h1>
 
     <script>// this en el scope global
-console.log("this: ".concat(this)); // this en el scope de una función
+console.log(`this: ${this}`); // this en el scope de una función
 
 function whoIsThis() {
   return this;
 }
 
-console.log("whoIsThis(): ".concat(whoIsThis())); // this en el scope de una función en strict mode
+console.log(`whoIsThis(): ${whoIsThis()}`); // this en el scope de una función en strict mode
 
 'use strict';
 
@@ -29,17 +29,17 @@ function whoIsThisStrict() {
   return this;
 }
 
-console.log("whoIsThisStrict(): ".concat(whoIsThisStrict())); // this en el contexto de un objeto
+console.log(`whoIsThisStrict(): ${whoIsThisStrict()}`); // this en el contexto de un objeto
 
-var person = {
+const person = {
   name: 'Frank',
-  saludar: function saludar() {
-    console.log("Hola soy ".concat(this.name));
+  saludar: function () {
+    console.log(`Hola soy ${this.name}`);
   }
 };
-console.log("person.saludar: ".concat(person.saludar())); // this cuando sacamos a una función de un objeto
+console.log(`person.saludar: ${person.saludar()}`); // this cuando sacamos a una función de un objeto
 
-var accion = person.saludar;
+const accion = person.saludar;
 accion(); // this en el contexto de una "clase"
 
 function Person(name) {
@@ -48,10 +48,10 @@ function Person(name) {
 }
 
 Person.prototype.saludar = function () {
-  console.log("Me llamo: ".concat(this.name));
+  console.log(`Me llamo: ${this.name}`);
 };
 
-var juanda = new Person('Juanda');
+const juanda = new Person('Juanda');
 juanda.saludar();</script>
   </body>
 </html>

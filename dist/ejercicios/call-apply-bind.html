@@ -18,23 +18,23 @@
     <script>// Establece `this` usando `call`
 //aqui establecimos el valor de this para la funcion saludar
 function saludar() {
-  console.log("Hola soy ".concat(this.name, " ").concat(this.apellido));
+  console.log(`Hola soy ${this.name} ${this.apellido}`);
 }
 
-var fran = {
+const fran = {
   name: 'Francisco',
   apellido: 'Garcia'
 };
 saludar.call(fran); // Establece `this` usando `call` y pasar argumentos a la función
 
 function caminar(metros, direccion) {
-  console.log("".concat(this.name, " camina ").concat(metros, " metros hacia ").concat(direccion));
+  console.log(`${this.name} camina ${metros} metros hacia ${direccion}`);
 }
 
 caminar.call(fran, 400, 'norte'); // Establece `this` usando `apply` y pasar argumentos a la función
 //recibe los parametros como un arreglo (array)
 
-var valores = [1500, 'el noreste'];
+const valores = [1500, 'el noreste'];
 caminar.apply(fran, [800, 'al sur']);
 caminar.apply(fran, valores); //diferencia entre call y apply
 //call los argumentos se pasan separados por coma
@@ -42,35 +42,33 @@ caminar.apply(fran, valores); //diferencia entre call y apply
 // Establecer `this` en una nueva función usando `bind`
 //se usa para hacer funciones reutilizables
 
-var juanda = {
+const juanda = {
   name: 'Juan David',
   apellido: 'Garcia'
 };
-var juandaSaluda = saludar.bind(juanda);
+const juandaSaluda = saludar.bind(juanda);
 juandaSaluda();
-var juandaCamina = caminar.bind(juanda);
+const juandaCamina = caminar.bind(juanda);
 juandaCamina(3576, 'al sur oriente');
-var juandaCamina2 = caminar.bind(juanda, 1234, 'al oriente');
+const juandaCamina2 = caminar.bind(juanda, 1234, 'al oriente');
 juandaCamina2(); //de esta forma guardamos parcialmente los argumentos y luego llenamos los demas
 
-var juandaCamina3 = caminar.bind(juanda, 5566);
+const juandaCamina3 = caminar.bind(juanda, 5566);
 juandaCamina3('el infinito y mas alla'); //“Currying” guardamos parcialmente algunos argumentos y luego llenamos los demas
 // Cuándo es útil usar uno de estos métodos
 // call y apply asignan el valor de this y se va a ejecutar inmediatamente
 // bind crea una nueva funcion,
 //const buttons = document.getElementsByClassName('call-to-action');
 
-var buttons = document.getElementsByClassName('call-to-action'); // buttons.forEach(button => {
+const buttons = document.getElementsByClassName('call-to-action'); // buttons.forEach(button => {
 //   button.onClick = () => alert('Nunca pares de aprender!!!')
 // });
 // Array.prototype.forEach.call(buttons, button => {
 //   button.onClick = () => alert('Nunca para de apreder!!!!!')
 // });
 
-Array.prototype.forEach.call(buttons, function (button) {
-  button.onclick = function () {
-    return alert('Nunca pares de aprender!!!!!!');
-  };
+Array.prototype.forEach.call(buttons, button => {
+  button.onclick = () => alert('Nunca pares de aprender!!!!!!');
 }); //Da error por que buttons, es un NodeList y no una funcion</script>
   </body>
 </html>
