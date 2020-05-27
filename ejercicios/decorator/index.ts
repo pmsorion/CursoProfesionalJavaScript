@@ -47,7 +47,6 @@ class Field {
             field.errors.push('eMail validado')
         } else {
             field.errors.push('Debe ser un email');
-            
         }
     };
   
