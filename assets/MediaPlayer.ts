@@ -5,6 +5,7 @@ class MediaPlayer {
   constructor(config) {
     this.media = config.el;
     this.plugins = config.plugins || [];
+    this.initPlayer();
     this.initPuligins();
   }
 
